@@ -1,0 +1,23 @@
+{% if employee_list %}
+    {% for employee in employee_list %}
+    <li>
+        {{ employee.name }} ({{ employee.dept }})
+        (<a href="{% url 'employee:employee_update' employee.id %}">Update</a> |
+        <a href="{% url 'employee:employee_delete' employee.id %}">Delete</a>)
+    </li>
+    {% endfor %}
+{% else %}
+<h1>No Employee Found</h1>
+{% endif %}
+
+<p>
+        {% if dept_count > 0 %}
+            <a href="{% url 'employee:employee_create' %}">Add an Employee</a>
+        {% else %}
+            <a href="{% url 'employee:dept_create' %}">Please add a Department before you add an Employee</a>
+        {% endif %}
+    <p>
+    <p>
+        <a href="{% url 'employee:all_dept' %}">View Department</a> ({{ dept_count }}) |
+        <a href="{% url 'employee:dept_create' %}">Add an Department</a>
+    </p>

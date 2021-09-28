@@ -1,0 +1,13 @@
+{% if dept_list %}
+    {% for dept in dept_list %}
+    <li>
+        {{ dept.name }}
+        (<a href="{% url 'employee:dept_update' dept.id %}">Update</a> |
+        <a href="{% url 'employee:dept_delete' dept.id %}">Delete</a>)
+    </li>
+    {% endfor %}
+{% else %}
+<h1>No Employee Found</h1>
+{% endif %}
+<br>
+<a href="{% url 'employee:all_employee' %}">Go to Employee list</a>
